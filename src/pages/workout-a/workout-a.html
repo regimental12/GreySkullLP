@@ -15,9 +15,9 @@
       Squats
     </ion-card-header>
     <ion-card-content class="set-button-wrapper">
-      <button ion-button >Set 1</button>
-      <button ion-button >Set 2</button>
-      <button ion-button >Set 3</button>
+      <button id="1" #first ion-button (click)="toggleNamedColor(first, 0)" color="dark">Set 1</button>
+      <button id="2" #second ion-button (click)="toggleNamedColor(second , 1)" color="dark" >Set 2</button>
+      <button id="3" #third ion-button (click)="toggleNamedColor(third, 2)" color="dark" >Set 3</button>
     </ion-card-content>
   </ion-card>
 
@@ -26,9 +26,9 @@
         Bench Press
       </ion-card-header>
       <ion-card-content class="set-button-wrapper">
-        <button ion-button >Set 1</button>
-        <button ion-button >Set 2</button>
-        <button ion-button >Set 3</button>
+        <button id="4" #fourth ion-button (click)="toggleNamedColor(fourth, 3)" color="dark">Set 1</button>
+        <button id="5" #fith ion-button (click)="toggleNamedColor(fith, 4)" color="dark">Set 2</button>
+        <button id="6" #six ion-button (click)="toggleNamedColor(six, 5)" color="dark">Set 3</button>
       </ion-card-content>
     </ion-card>
 
@@ -37,9 +37,9 @@
           Bent Over Row
         </ion-card-header>
         <ion-card-content class="set-button-wrapper">
-          <button ion-button >Set 1</button>
-          <button ion-button >Set 2</button>
-          <button ion-button >Set 3</button>
+          <button id="7" #seven ion-button (click)="toggleNamedColor(seven, 6)" color="dark">Set 1</button>
+          <button id="8" #eight ion-button (click)="toggleNamedColor(eight, 7)" color="dark">Set 2</button>
+          <button id="9" #nine ion-button (click)="toggleNamedColor(nine, 8)" color="dark">Set 3</button>
         </ion-card-content>
       </ion-card>
 

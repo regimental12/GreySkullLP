@@ -15,11 +15,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WorkoutAPage {
 
+  // array to hold button toggle values.
+
+  setDoneArray = [false,false,false,false,false,false,false,false,false,];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WorkoutAPage');
+    
   }
+
+  
+  public toggleNamedColor(ionicButton, index): void {
+    console.log(index);
+    if(ionicButton._color === 'dark')
+    {
+      this.setDoneArray[index] = true;
+      ionicButton.color =  'primary';
+    }
+    else
+    {
+      this.setDoneArray[index] = false;
+      ionicButton.color = 'dark';
+    }
+    console.log(this.setDoneArray);
+  }
+    
+
 
 }
