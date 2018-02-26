@@ -1,0 +1,20 @@
+page-workout-a {
+    
+    .main-wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .set-button-wrapper{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .finish-button{
+        display: flex;
+        width: 50%;
+        margin: 5% auto;
+    }
+}
