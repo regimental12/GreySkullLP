@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the WorkoutAPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-workout-a',
@@ -17,39 +10,32 @@ export class WorkoutAPage {
 
   // array to hold button toggle values.
 
-  setDoneArray = [false,false,false,false,false,false,false,false,false,];
+  setDoneArray = [false, false, false, false, false, false, false, false, false,];
 
-  amrapArray: any =[];
+  amrapArray: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
   }
 
-  ionViewDidLoad() {
-    
-  }
+  ionViewDidLoad() {}
 
-  Amrap(ExcerciseName , index)
-  {
+  Amrap(ExcerciseName, index) {
     let temp;
-    switch(ExcerciseName)
-    {
+    switch (ExcerciseName) {
       case 'Squat':
-      if(this.setDoneArray[index] == true)
-      {
-        temp = this.presentAlert();
-      }
+        if (this.setDoneArray[index] == true) {
+          temp = this.presentAlert();
+        }
         break;
       case 'Bench':
-      if(this.setDoneArray[index] == true)
-      {
-        temp = this.presentAlert();
-      }
+        if (this.setDoneArray[index] == true) {
+          temp = this.presentAlert();
+        }
         break;
       case 'Row':
-      if(this.setDoneArray[index] == true)
-      {
-        temp = this.presentAlert();
-      }
+        if (this.setDoneArray[index] == true) {
+          temp = this.presentAlert();
+        }
         break;
       default:
         console.log("excersise not found");
@@ -68,37 +54,35 @@ export class WorkoutAPage {
         }
       ],
       buttons: [
-                {
-                  text: 'Cancel'
-                },
-                {
-                  text: 'Enter',
-                  handler: (data) => {
-                    console.log(data);
-                    return data;
-                  }
-                }
-              ]
+        {
+          text: 'Cancel'
+        },
+        {
+          text: 'Enter',
+          handler: (data) => {
+            console.log(data);
+            return data;
+          }
+        }
+      ]
     });
     alert.present();
   }
 
-  
+
   public toggleNamedColor(ionicButton, index): void {
     console.log(index);
-    if(ionicButton._color === 'dark')
-    {
+    if (ionicButton._color === 'dark') {
       this.setDoneArray[index] = true;
-      ionicButton.color =  'primary';
+      ionicButton.color = 'primary';
     }
-    else
-    {
+    else {
       this.setDoneArray[index] = false;
       ionicButton.color = 'dark';
     }
     console.log(this.setDoneArray);
   }
-    
+
 
 
 }
