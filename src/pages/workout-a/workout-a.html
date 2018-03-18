@@ -39,7 +39,7 @@
         <ion-card-content class="set-button-wrapper">
           <button id="7" #seven ion-button (click)="toggleNamedColor(seven, 6)" color="dark">Set 1</button>
           <button id="8" #eight ion-button (click)="toggleNamedColor(eight, 7)" color="dark">Set 2</button>
-          <button id="9" #nine ion-button (click)="toggleNamedColor(nine, 8)" color="dark">Set 3</button>
+          <button id="9" #nine ion-button (click)="toggleNamedColor(nine, 8)" (click)="Amrap('Row', 8)" color="dark">Set 3</button>
         </ion-card-content>
       </ion-card>
 

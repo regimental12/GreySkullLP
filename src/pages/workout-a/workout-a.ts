@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the WorkoutAPage page.
@@ -19,11 +19,68 @@ export class WorkoutAPage {
 
   setDoneArray = [false,false,false,false,false,false,false,false,false,];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  amrapArray: any =[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     
+  }
+
+  Amrap(ExcerciseName , index)
+  {
+    let temp;
+    switch(ExcerciseName)
+    {
+      case 'Squat':
+      if(this.setDoneArray[index] == true)
+      {
+        temp = this.presentAlert();
+      }
+        break;
+      case 'Bench':
+      if(this.setDoneArray[index] == true)
+      {
+        temp = this.presentAlert();
+      }
+        break;
+      case 'Row':
+      if(this.setDoneArray[index] == true)
+      {
+        temp = this.presentAlert();
+      }
+        break;
+      default:
+        console.log("excersise not found");
+    }
+  }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Enter Amrap Amount',
+      subTitle: 'How many reps did you do?',
+      inputs: [
+        {
+          name: 'Amount',
+          placeholder: '0',
+          type: 'number'
+        }
+      ],
+      buttons: [
+                {
+                  text: 'Cancel'
+                },
+                {
+                  text: 'Enter',
+                  handler: (data) => {
+                    console.log(data);
+                    return data;
+                  }
+                }
+              ]
+    });
+    alert.present();
   }
 
   
