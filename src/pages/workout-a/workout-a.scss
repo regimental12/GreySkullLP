@@ -17,4 +17,10 @@ page-workout-a {
         width: 50%;
         margin: 5% auto;
     }
+
+    .weight-div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

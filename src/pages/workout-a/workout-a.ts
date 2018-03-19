@@ -8,33 +8,37 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class WorkoutAPage {
 
+  // needs initialising from DB.
+  squatWeight: number = 0;
+  benchWeight: number = 0;
+  rowWeight: number = 0;
+  
   // array to hold button toggle values.
-
   setDoneArray = [false, false, false, false, false, false, false, false, false,];
 
-  amrapArray: any = [];
+  // No. of reps for each exercise.
+  amrapArray: any = [0, 0, 0];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {}
 
   Amrap(ExcerciseName, index) {
-    let temp;
-    switch (ExcerciseName) {
+    switch (ExcerciseName) 
+    {
       case 'Squat':
         if (this.setDoneArray[index] == true) {
-          temp = this.presentAlert();
+          this.presentAlert(index);
         }
         break;
       case 'Bench':
         if (this.setDoneArray[index] == true) {
-          temp = this.presentAlert();
+          this.presentAlert(index);
         }
         break;
       case 'Row':
         if (this.setDoneArray[index] == true) {
-          temp = this.presentAlert();
+          this.presentAlert(index);
         }
         break;
       default:
@@ -42,33 +46,45 @@ export class WorkoutAPage {
     }
   }
 
-  presentAlert() {
+  presentAlert(index) {
     let alert = this.alertCtrl.create({
       title: 'Enter Amrap Amount',
       subTitle: 'How many reps did you do?',
       inputs: [
         {
           name: 'Amount',
-          placeholder: '0',
           type: 'number'
         }
       ],
       buttons: [
-        {
-          text: 'Cancel'
-        },
-        {
-          text: 'Enter',
-          handler: (data) => {
-            console.log(data);
-            return data;
-          }
+      {
+        text: 'Cancel'
+      },
+      {
+        text: 'Enter',
+        handler: (data) => {
+              this.setAmrapArray(index, data);
         }
+      }
       ]
     });
     alert.present();
   }
 
+  setAmrapArray(index, data) {
+    switch(index) {
+      case 2:
+        this.amrapArray[0] = parseInt(data.Amount);
+        break;
+      case 5:
+        this.amrapArray[1] = parseInt(data.Amount);
+        break;
+      case 8:
+        this.amrapArray[2] = parseInt(data.Amount); 
+        break;
+    }
+    console.log(this.amrapArray);
+  }
 
   public toggleNamedColor(ionicButton, index): void {
     console.log(index);
@@ -82,7 +98,5 @@ export class WorkoutAPage {
     }
     console.log(this.setDoneArray);
   }
-
-
 
 }

@@ -11,8 +11,8 @@
 
   <div class="main-wrapper">
   <ion-card>
-    <ion-card-header>
-      Squats
+    <ion-card-header class="weight-div">
+      <div>Squats</div><div>{{squatWeight}}</div>
     </ion-card-header>
     <ion-card-content class="set-button-wrapper">
       <button id="1" #first ion-button (click)="toggleNamedColor(first, 0)" color="dark">Set 1</button>
@@ -22,8 +22,8 @@
   </ion-card>
 
   <ion-card>
-      <ion-card-header>
-        Bench Press
+      <ion-card-header class="weight-div">
+        <div>Bench Press</div><div>{{benchWeight}}</div>
       </ion-card-header>
       <ion-card-content class="set-button-wrapper">
         <button id="4" #fourth ion-button (click)="toggleNamedColor(fourth, 3)" color="dark">Set 1</button>
@@ -33,8 +33,8 @@
     </ion-card>
 
     <ion-card>
-        <ion-card-header>
-          Bent Over Row
+        <ion-card-header class="weight-div">
+          <div>Bent Over Row</div><div>{{rowWeight}}</div>
         </ion-card-header>
         <ion-card-content class="set-button-wrapper">
           <button id="7" #seven ion-button (click)="toggleNamedColor(seven, 6)" color="dark">Set 1</button>
