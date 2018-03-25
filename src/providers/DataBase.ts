@@ -7,8 +7,10 @@ import * as moment from 'moment';
 
 @Injectable()
 export class DataBase {
+    
     db: SQLiteObject;
     sqlLocalStorage: SQLite;
+
     constructor(private platform: Platform) {
         this.platform.ready().then(() => {
             this.sqlLocalStorage = new SQLite();
@@ -21,24 +23,32 @@ export class DataBase {
         })
     }
     /**
-     * Create table
+     * Create tables
      */
     private createTables() {
+        console.log("create table");
         this.db.executeSql(
-            "CREATE TABLE IF NOT EXISTS onBoardingInfo" +
+            "CREATE TABLE IF NOT EXISTS WorkOutA" +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "name TEXT, gender TEXT , dob TEXT , height INTEGER," +
-            "weight INTEGER, activitylevel INTEGER, sportofinterest BLOB )", []);
+            "Squat REAL," +  
+            "Bench REAL ," +
+            "Row REAL ," + 
+            "SquatAmrap INT," +
+            "BenchAmrap INT," + 
+            "RowAmrap INT)", []);
     }
+
+
     /** Called to insert record into DB. Only needs calling when creating user after user has been created call updateInfo to add records to that user
      * 
-     *  @param item: column to update.
-     *  @param name: value to insert.
+     *  @param tablename: table to update. string
+     *  @param column: column to update. string
+     *  @param setDone: value to insert. number
      */
-    public insertItem(item: string, name: string) {
+    public insertSetDone(tableName: string, set: string, setDone: number) {
         return new Promise((resolve, reject) => {
-            let sql = "INSERT INTO onBoardingInfo (" + item + ") VALUES (?)";
-            this.db.executeSql(sql, [name]).then((data) => {
+            let sql = "INSERT INTO " + tableName + "(" + set + ")" + " VALUES (?)";
+            this.db.executeSql(sql, [setDone]).then((data) => {
                 resolve(data);
             }, (error) => {
                 reject(error);
@@ -50,19 +60,12 @@ export class DataBase {
     */
     public getInfo() {
         return new Promise((resolve, reject) => {
-            this.db.executeSql("SELECT * FROM onBoardingInfo", []).then((data) => {
+            this.db.executeSql("SELECT * FROM WorkOutA", []).then((data) => {
                 let arrayUserName = [];
                 if (data.rows.length > 0) {
                     for (var i = 0; i < data.rows.length; i++) {
                         arrayUserName.push({
-                            id: data.rows.item(i).id,
-                            name: data.rows.item(i).name,
-                            gender: data.rows.item(i).gender,
-                            dob: data.rows.item(i).dob,
-                            height: data.rows.item(i).height,
-                            weight: data.rows.item(i).weight,
-                            actLevel: data.rows.item(i).activitylevel,
-                            sportOfInt: data.rows.item(i).sportofinterest
+                            Squat: data.rows.item(i).Squat
                         })
                     }
                 } resolve(arrayUserName);
@@ -106,10 +109,10 @@ export class DataBase {
             })
         })
     }
-    public testLocaldb() {
-        this.insertItem("name", "Richard");
-        this.updateInfo("gender", "male", "Richard");
-        return this.getInfo();
-        // return this.deleteInfo("Richard");
-    }
+    // public testLocaldb() {
+    //     this.insertItem("name", "Richard");
+    //     this.updateInfo("gender", "male", "Richard");
+    //     return this.getInfo();
+    //     // return this.deleteInfo("Richard");
+    // }
 }

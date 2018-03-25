@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { DataBase } from '../../providers/DataBase';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,18 @@ export class WorkoutAPage {
   // No. of reps for each exercise.
   amrapArray: any = [0, 0, 0];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private dataBase: DataBase ) {
+    this.dataBase.insertSetDone("WorkOutA", "Squat" , 1 ).then((res) => {
+      console.log("workout a constructor res: " + JSON.stringify(res));
+      this.dataBase.getInfo().then((res) => {
+        console.log(JSON.stringify(res));
+      }).catch((error) => {
+        console.log(error);
+      })
+    }).catch((error) => {
+      console.log("workout a constructor error: " + error);
+    })
+  }
 
   ionViewDidLoad() {}
 
